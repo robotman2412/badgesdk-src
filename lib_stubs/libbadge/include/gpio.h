@@ -157,19 +157,35 @@ uint32_t io_cap_i2c_speed(int interface);
 // TODO: SPI capabilities.
 
 
+// Set resolution returned by `io_analog_read`.
+// If the system does not have enough bits to do so, they are extrapolated.
+// The default value is 10 bits.
+void io_set_analog_read_resolution(int bits);
+// Set resolution taken by `io_analog_write`.
+// If the system does not have enough bits to do so, the extra resolution is ignored.
+// The default value is 10 bits.
+void io_set_analog_write_resolution(int bits);
+
+
 // Read value from pin.
 // If not set to IO_MODE_INPUT, the resulting value is UNSPECIFIED.
 bool io_read(int pin);
 // Write value to pin.
 // If not set to IO_MODE_OUTPUT, the resulting behaviour is UNSPECIFIED.
 void io_write(int pin, bool value);
+// Read analog-to-digital value from pin.
+// If not set to IO_MODE_ANALOG_IN, the resulting value is UNSPECIFIED.
+int io_analog_read(int pin);
+// Write digital-to-analog value to pin.
+// If not set to IO_MODE_ANALOG_OUT, the resulting behaviour is UNSPECIFIED.
+void io_analog_write(int pin, int value);
 // Set mode of pin.
 // Returns whether the operation was successful.
-bool io_mode(int pin, io_mode_t mode);
+bool io_set_mode(int pin, io_mode_t mode);
 // Set pull direction of an input pin.
-// If not set to IO_MODE_INPUT, the resulting value is UNSPECIFIED.
+// If not set to IO_MODE_INPUT, the resulting behaviour is UNSPECIFIED.
 // Returns whether the operation was successful.
-bool io_pull(int pin, io_pull_t dir);
+bool io_set_pull(int pin, io_pull_t dir);
 
 // Attach a pin change handler to a digital input pin.
 // The cookie value passed to the ISR will be NULL.

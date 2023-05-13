@@ -26,3 +26,5 @@ install:
 	@cp -r build/gen_include/* $(INSTALL_PATH)/include/
 	@cp -r build/gen_lib/* $(INSTALL_PATH)/lib/
 	@cp -r build/gen_lib_stubs/* $(INSTALL_PATH)/lib_stubs/
+	@echo "*link_libgcc:" > $(INSTALL_PATH)/link/default.specs
+	@echo "-L$(INSTALL_PATH)/lib -L$(INSTALL_PATH)/lib_stubs" >> $(INSTALL_PATH)/link/default.specs

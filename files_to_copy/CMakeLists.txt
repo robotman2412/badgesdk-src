@@ -29,13 +29,17 @@ cmake_minimum_required(VERSION 3.10)
 set(BADGESDK_INCLUDE_PATH ${CMAKE_CURRENT_LIST_DIR}/include)
 set(BADGESDK_LIB_PATH ${CMAKE_CURRENT_LIST_DIR}/lib ${CMAKE_CURRENT_LIST_DIR}/lib_stubs)
 
+# Overrides linker path.
+set(BADGESDK_LIBGCC_SPECS ${CMAKE_CURRENT_LIST_DIR}/link/default.specs)
+
 # Default linker script.
 set(BADGESDK_LINKER_SCRIPT ${CMAKE_CURRENT_LIST_DIR}/link/default.ld)
-# System libraries in link order.
+# Required system libraries in link order.
 set(BADGESDK_SYSTEM_LIBRARIES
 	${CMAKE_CURRENT_LIST_DIR}/lib/libbadgert.a
 	${CMAKE_CURRENT_LIST_DIR}/lib_stubs/libbadge.so
 	${CMAKE_CURRENT_LIST_DIR}/lib_stubs/libc.so
+	${CMAKE_CURRENT_LIST_DIR}/lib_stubs/libfloat.so
 )
 # Include path passed to compiler.
 set(BADGESDK_INCLUDE_OPTION)
@@ -59,6 +63,7 @@ set(CMAKE_CXX_COMPILER_FORCED true)
 function(badgesdk_define_app target)
 	# Set compile flags for apps.
 	target_compile_options(${target} BEFORE PRIVATE
+		-specs=${BADGESDK_LIBGCC_SPECS}
 		-march=rv32imac -mabi=ilp32
 		-nostdinc
 		-ffreestanding -fno-exceptions
@@ -68,6 +73,7 @@ function(badgesdk_define_app target)
 	)
 	# Set linker flags for apps.
 	target_link_options(${target} BEFORE PRIVATE
+		-specs=${BADGESDK_LIBGCC_SPECS}
 		-march=rv32imac -mabi=ilp32
 		-nostdlib -nodefaultlibs
 		-fPIE
@@ -84,6 +90,7 @@ endfunction()
 function(badgesdk_define_shared_lib target)
 	# Set compile flags for apps.
 	target_compile_options(${target} BEFORE PRIVATE
+		-specs=${BADGESDK_LIBGCC_SPECS}
 		-march=rv32imac -mabi=ilp32
 		-nostdinc
 		-ffreestanding -fno-exceptions
@@ -92,6 +99,7 @@ function(badgesdk_define_shared_lib target)
 	)
 	# Set linker flags for apps.
 	target_link_options(${target} BEFORE PRIVATE
+		-specs=${BADGESDK_LIBGCC_SPECS}
 		-march=rv32imac -mabi=ilp32
 		-nostdlib -nodefaultlibs
 		-fPIE
@@ -106,6 +114,7 @@ endfunction()
 function(badgesdk_define_static_lib target)
 	# Set compile flags for apps.
 	target_compile_options(${target} BEFORE PRIVATE
+		-specs=${BADGESDK_LIBGCC_SPECS}
 		-march=rv32imac -mabi=ilp32
 		-nostdinc
 		-ffreestanding -fno-exceptions

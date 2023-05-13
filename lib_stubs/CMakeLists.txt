@@ -26,4 +26,5 @@ cmake_minimum_required(VERSION 3.10)
 
 add_subdirectory(libcstub)
 add_subdirectory(libbadge)
+add_subdirectory(libfloat)
 add_subdirectory(libm)

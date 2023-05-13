@@ -50,11 +50,11 @@ bool io_read(int pin) {}
 void io_write(int pin, bool value) {}
 // Set mode of pin.
 // Returns whether the operation was successful.
-bool io_mode(int pin, io_mode_t mode) {}
+bool io_set_mode(int pin, io_mode_t mode) {}
 // Set pull direction of an input pin.
 // If not set to IO_MODE_INPUT, the resulting value is UNSPECIFIED.
 // Returns whether the operation was successful.
-bool io_pull(int pin, io_pull_t dir) {}
+bool io_set_pull(int pin, io_pull_t dir) {}
 
 // Attach a pin change handler to a digital input pin.
 // The cookie value passed to the ISR will be NULL.
