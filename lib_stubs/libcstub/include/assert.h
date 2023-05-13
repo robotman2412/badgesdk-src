@@ -24,25 +24,15 @@
 
 #pragma once
 
-#define NULL ((void*)0)
-#define offsetof(t,f) __builtin_offsetof(t,f)
+#include <stdlib.h>
 
-#ifndef __SIZE_TYPE__
-#define __SIZE_TYPE__ unsigned long
+#ifdef NDEBUG
+#define assert(x) ((void)0)
+#else
+#define assert(x) do {\
+		if (!(x)) {\
+			puts("assert() failed");\
+			abort();\
+		}\
+	} while(0)
 #endif
-typedef __SIZE_TYPE__ size_t;
-
-#ifndef __SSIZE_TYPE__
-#define __SSIZE_TYPE__ long
-#endif
-typedef __SSIZE_TYPE__ ssize_t;
-
-#ifndef __PTRDIFF_TYPE__
-#define __PTRDIFF_TYPE__ long
-#endif
-typedef __PTRDIFF_TYPE__ ptrdiff_t;
-
-#ifndef __WCHAR_TYPE__
-#define __WCHAR_TYPE__ int
-#endif
-typedef __WCHAR_TYPE__ wchar_t;

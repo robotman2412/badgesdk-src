@@ -17,7 +17,7 @@ clean:
 	rm -rf build
 
 install:
-	@echo -e "Installing to $(INSTALL_PATH)"
+	@echo "Installing to $(INSTALL_PATH)"
 	@mkdir -p $(INSTALL_PATH)
 	@mkdir -p $(INSTALL_PATH)/include
 	@mkdir -p $(INSTALL_PATH)/lib
