@@ -24,10 +24,29 @@
 
 #include "display.h"
 
+
+// Register a new display.
+// The `cookie` parameter is passed to the display's write function.
+// Returns an ID on success, 0 on error.
+int display_add(display_write_func_t func, void *cookie, int width, int height) {
+	return 0;
+}
+// Remove a display.
+// Returns success status.
+bool display_remove(int display) {
+	return false;
+}
 // Get the amount of connected displays.
 // May be zero on badges without displays.
 int display_count() {
 	return 0;
+}
+// Get the IDs of connected displays.
+// Any ID zero means not present.
+void display_get_ids(int *out_ids, size_t len) {
+	for (size_t i = 0; i < len; i++) {
+		out_ids[i] = 0;
+	}
 }
 
 // Get the width in pixels of a display.
@@ -39,10 +58,6 @@ int display_height(int display) {
 	return 0;
 }
 
-// Set the display backlight value 0-255.
-bool display_backlight(int display, uint8_t value) {
-	return false;
-}
 // Draw the full area of a display.
 bool display_write(int display, const void *buf, size_t len) {
 	return false;
