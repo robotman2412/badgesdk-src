@@ -29,4 +29,10 @@ if (NOT DEFINED ENV{BADGESDK_PATH})
 	set(ENV{BADGESDK_PATH} $ENV{HOME}/.badgeteam/badgesdk)
 endif()
 
+# Assert that the SDK actually exists.
+if (NOT EXISTS $ENV{BADGESDK_PATH}/CMakeLists.txt)
+	message(FATAL_ERROR "BadgeSDK not found! You can get it at https://github.com/robotman2412/badgesdk-src")
+endif()
+
+# Include the SDK from here.
 include($ENV{BADGESDK_PATH}/CMakeLists.txt)
