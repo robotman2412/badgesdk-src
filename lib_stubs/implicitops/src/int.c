@@ -1,4 +1,4 @@
-#[[
+/*
 	MIT License
 
 	Copyright    (c) 2023 Julian Scheffers
@@ -20,11 +20,15 @@
 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
-]]
+*/
 
-cmake_minimum_required(VERSION 3.10)
-
-add_subdirectory(libcstub)
-add_subdirectory(libbadge)
-add_subdirectory(implicitops)
-add_subdirectory(libm)
+int __mulsi3(int, int) {}
+int __divsi3(int, int) {}
+unsigned int __udivsi3(unsigned int, unsigned int) {}
+int __modsi3(int, int) {}
+unsigned int __umodsi3(unsigned int, unsigned int) {}
+long __muldi3(long, long) {}
+long __divdi3(long, long) {}
+unsigned long __udivdi3(unsigned long, unsigned long) {}
+long __moddi3(long, long) {}
+unsigned long __umoddi3(unsigned long, unsigned long) {}

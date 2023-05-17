@@ -39,7 +39,7 @@ set(BADGESDK_SYSTEM_LIBRARIES
 	${CMAKE_CURRENT_LIST_DIR}/lib/libbadgert.a
 	${CMAKE_CURRENT_LIST_DIR}/lib_stubs/libbadge.so
 	${CMAKE_CURRENT_LIST_DIR}/lib_stubs/libc.so
-	${CMAKE_CURRENT_LIST_DIR}/lib_stubs/libfloat.so
+	${CMAKE_CURRENT_LIST_DIR}/lib_stubs/libimplicitops.so
 )
 # Include path passed to compiler.
 set(BADGESDK_INCLUDE_OPTION)
