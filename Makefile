@@ -1,7 +1,7 @@
 
 .PHONY: all build clean install
 
-INSTALL_PATH ?= $(HOME)/.badgeteam/badgesdk
+BADGESDK_PATH ?= $(HOME)/.badgeteam/badgesdk
 
 all: build install
 
@@ -22,16 +22,16 @@ clean:
 	rm -rf build
 
 install:
-	@echo "[32mInstalling to $(INSTALL_PATH)[0m"
-	@mkdir -p $(INSTALL_PATH)
-	@mkdir -p $(INSTALL_PATH)/include
-	@mkdir -p $(INSTALL_PATH)/lib
-	@mkdir -p $(INSTALL_PATH)/lib_stubs
-	@cp -r files_to_copy/* $(INSTALL_PATH)/
-	@cp -r build/gen_include/* $(INSTALL_PATH)/include/
-	@cp -r build/gen_lib/* $(INSTALL_PATH)/lib/
-	@cp -r build/gen_lib_stubs/* $(INSTALL_PATH)/lib_stubs/
-	@echo "*link_libgcc:" > $(INSTALL_PATH)/link/default.specs
-	@echo "-L$(INSTALL_PATH)/lib -L$(INSTALL_PATH)/lib_stubs" >> $(INSTALL_PATH)/link/default.specs
-	@BADGESDK_PATH=$(INSTALL_PATH) python3 add_to_bashrc.py
+	@echo "[32mInstalling to $(BADGESDK_PATH)[0m"
+	@mkdir -p $(BADGESDK_PATH)
+	@mkdir -p $(BADGESDK_PATH)/include
+	@mkdir -p $(BADGESDK_PATH)/lib
+	@mkdir -p $(BADGESDK_PATH)/lib_stubs
+	@cp -r files_to_copy/* $(BADGESDK_PATH)/
+	@cp -r build/gen_include/* $(BADGESDK_PATH)/include/
+	@cp -r build/gen_lib/* $(BADGESDK_PATH)/lib/
+	@cp -r build/gen_lib_stubs/* $(BADGESDK_PATH)/lib_stubs/
+	@echo "*link_libgcc:" > $(BADGESDK_PATH)/link/default.specs
+	@echo "-L$(BADGESDK_PATH)/lib -L$(BADGESDK_PATH)/lib_stubs" >> $(BADGESDK_PATH)/link/default.specs
+	@BADGESDK_PATH=$(BADGESDK_PATH) python3 add_to_bashrc.py
 	@echo "[32mDone![0m"
