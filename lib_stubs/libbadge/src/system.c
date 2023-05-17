@@ -36,6 +36,12 @@ void delay_ms(int64_t millis) {}
 // Delay for a period of microseconds.
 void delay_us(int64_t millis) __attribute__((weak));
 void delay_us(int64_t millis) {}
+// Get the number of milliseconds since system startup.
+int64_t uptime_ms() __attribute__((weak));
+int64_t uptime_ms() { return 0; }
+// Get the number of microseconds since system startup.
+int64_t uptime_us() __attribute__((weak));
+int64_t uptime_us() { return 0; }
 // Request a new range of memory.
 void *__mem_map(size_t size, size_t min_align, bool allow_exec) __attribute__((weak));
 void *__mem_map(size_t size, size_t min_align, bool allow_exec) { return (void*) 0; }

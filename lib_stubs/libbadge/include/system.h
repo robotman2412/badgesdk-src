@@ -35,6 +35,11 @@ void delay_ms(int64_t millis);
 // Delay for a period of microseconds.
 void delay_us(int64_t millis);
 
+// Get the number of milliseconds since system startup.
+int64_t uptime_ms();
+// Get the number of microseconds since system startup.
+int64_t uptime_us();
+
 // Request a new range of memory.
 void *__mem_map(size_t size, size_t min_align, bool allow_exec);
 // Discard a range of memory.
