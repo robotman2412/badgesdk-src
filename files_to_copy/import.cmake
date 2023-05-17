@@ -24,6 +24,7 @@
 
 cmake_minimum_required(VERSION 3.10)
 
+# If not already defined in environment, set the default SDK path.
 if (NOT DEFINED ENV{BADGESDK_PATH})
 	set(ENV{BADGESDK_PATH} $ENV{HOME}/.badgeteam/badgesdk)
 endif()

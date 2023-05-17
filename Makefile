@@ -1,7 +1,7 @@
 
 .PHONY: all build clean install
 
-INSTALL_PATH=$(HOME)/.badgeteam/badgesdk
+INSTALL_PATH ?= $(HOME)/.badgeteam/badgesdk
 
 all: build install
 
@@ -17,7 +17,7 @@ clean:
 	rm -rf build
 
 install:
-	@echo "Installing to $(INSTALL_PATH)"
+	@echo "[32mInstalling to $(INSTALL_PATH)[0m"
 	@mkdir -p $(INSTALL_PATH)
 	@mkdir -p $(INSTALL_PATH)/include
 	@mkdir -p $(INSTALL_PATH)/lib
@@ -28,3 +28,4 @@ install:
 	@cp -r build/gen_lib_stubs/* $(INSTALL_PATH)/lib_stubs/
 	@echo "*link_libgcc:" > $(INSTALL_PATH)/link/default.specs
 	@echo "-L$(INSTALL_PATH)/lib -L$(INSTALL_PATH)/lib_stubs" >> $(INSTALL_PATH)/link/default.specs
+	@echo "[32mDone![0m"
