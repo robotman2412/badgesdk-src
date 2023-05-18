@@ -1,4 +1,4 @@
-#[[
+/*
 	MIT License
 
 	Copyright    (c) 2023 Julian Scheffers
@@ -20,11 +20,19 @@
 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
-]]
+*/
 
-cmake_minimum_required(VERSION 3.10)
+#pragma once
 
-add_subdirectory(libcstub)
-add_subdirectory(libbadge)
-add_subdirectory(implicitops)
-add_subdirectory(libm)
+#include <stdlib.h>
+
+#ifdef NDEBUG
+#define assert(x) ((void)0)
+#else
+#define assert(x) do {\
+		if (!(x)) {\
+			puts("assert() failed");\
+			abort();\
+		}\
+	} while(0)
+#endif

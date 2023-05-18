@@ -1,10 +1,10 @@
-#[[
+/*
 	MIT License
 
-	Copyright    (c) 2023 Julian Scheffers
+	Copyright (c) 2023 Julian Scheffers
 
 	Permission is hereby granted, free of charge, to any person obtaining a copy
-	of this software and associated documentation files    (the "Software"), to deal
+	of this software and associated documentation files (the "Software"), to deal
 	in the Software without restriction, including without limitation the rights
 	to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 	copies of the Software, and to permit persons to whom the Software is
@@ -20,9 +20,15 @@
 	LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 	OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 	SOFTWARE.
-]]
+*/
 
-cmake_minimum_required(VERSION 3.10)
+#include "badgeabi.h"
 
-add_subdirectory(badgert)
-add_subdirectory(display)
+// System call used by libc's `fopen()`.
+int __open(int *__errno_out, const char *__path, int __flags) { return -1; }
+// System call used by libc's `fclose()`.
+int __close(int *__errno_out, int __fd) { return -1; }
+// System call used by libc's `fseek()` and `ftell()`.
+int __seek(int *__errno_out, int __fd, long __off, int __whence) { return -1; }
+// System call used by libc's `fflush()`.
+int __flush(int *__errno_out, int __fd) { return -1; }

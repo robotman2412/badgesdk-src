@@ -93,5 +93,12 @@ add_link_options(
 
 
 # Add libraries.
-add_subdirectory(lib)
-add_subdirectory(lib_stubs)
+add_subdirectory(lib/badgert)
+add_subdirectory(lib/c)
+add_subdirectory(lib/display)
+
+add_subdirectory(lib_stubs/abi)
+add_subdirectory(lib_stubs/badge)
+add_subdirectory(lib_stubs/cstub)
+add_subdirectory(lib_stubs/implicitops)
+add_subdirectory(lib_stubs/m)

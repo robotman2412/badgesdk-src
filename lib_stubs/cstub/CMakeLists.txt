@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Create output file and add sources.
-add_library(c SHARED
+add_library(cstub SHARED
 	src/string.c
 	src/malloc.c
 	src/stdlib.c
@@ -9,11 +9,11 @@ add_library(c SHARED
 )
 
 # Add ABI files into include path.
-target_include_directories(c PUBLIC
+target_include_directories(cstub PUBLIC
 	${CMAKE_CURRENT_LIST_DIR}/include
 )
 
 # Export files.
-export_lib_stub(c libc.so)
-export_include(c include .)
-export_include(c include/cstubbits cstubbits)
+export_lib_stub(cstub libcstub.so)
+export_include(cstub include .)
+export_include(cstub include/cstubbits cstubbits)
